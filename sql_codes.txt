@@ -1,0 +1,550 @@
+-- overall
+
+-- creation of table
+
+-- -- user
+-- create table Users
+-- (
+--   user_id int primary key,
+--   firstname char(10) NOT NULL,
+--   lastname char(10),
+--   address char(130),
+--   email char(25) NOT NULL, 
+--   phone_no char(10) NOT NULL, 
+--   DOB date NOT NULL,
+--   gender char(10)
+-- );
+
+-- --post
+-- create table posts(
+--     post_id int primary key,
+--     post_content varchar(100),
+--     post_date date,
+--     user_id int,
+--     foreign key (user_id) references users(user_id)
+-- );
+ 
+
+-- --comments
+-- create table comments
+-- (
+--  comment_id int primary key,
+--  post_id int references posts(post_id),
+--  user_id int references Users(user_id),
+--  comment_date date,
+--  comment_content varchar(100)
+-- );
+
+-- --pages
+-- create table pages
+-- (
+--   page_id int primary key,
+--   page_name varchar(20),
+--   page_content VARCHAR(200)
+-- );
+
+-- -- page like
+-- create table page_likes
+-- (
+--   page_id int,
+--   user_id int references Users(user_id),
+--   primary key(page_id,user_id)
+-- )
+
+-- --photos
+-- create table photos(
+--     photo_id int primary key,
+--     post_id int,
+--     image_content varchar(100),
+--     foreign key (post_id) references posts(post_id)
+-- );
+
+--   -- comments_likes
+-- create table comment_likes
+-- (
+--   comment_id int references comments(comment_id),
+--   user_id int references Users(user_id),
+--   primary key(comment_id,user_id)
+-- )
+
+-- -- share
+-- create table shares(
+--     post_id int ,
+--     user_id int ,
+--     foreign key(post_id) references posts(post_id),
+--     foreign key(user_id) references users(user_id),
+--   	PRIMARY KEY(post_id,user_id)
+-- );
+
+--post_like
+-- create table posts_likes(
+--     post_id int ,
+--     user_id int ,
+--     foreign key(post_id) references posts(post_id),
+--     foreign key(user_id) references users(user_id),
+--     PRIMARY KEY(post_id,user_id)
+-- );
+
+-- -- friend
+-- create table friends
+-- (
+--   friend_id int ,
+--   user_id int references Users(user_id),
+--   primary key(friend_id,user_id)
+-- )
+
+-- --insertion of data
+
+-- -- user
+-- INSERT INTO Users VALUES (1,'akshit','sharma','Madhavaram High Road, Perambur','akshitsharma@gmail.com',8875454884,to_date('10-02-2002','mm-dd-yyyy'),'male');
+-- INSERT INTO Users VALUES (2,'Rishi','Tapia','ferozepur bus stand','rishitapia@gmail.com',9876543210,to_date('10-10-2000','mm-dd-yyyy'),'male');
+--  INSERT INTO Users VALUES (3,'Isiah','Sullivan','Ketayun Mns S R Rd Vile Parle','isiahsullivan',9638527410,to_date('09-03-1998','mm-dd-yyyy'),'male');
+--  INSERT INTO Users VALUES (4,'Emelia','Preston','Miraj Apt Nr. Natubhai','emeliaPreston@yahoo.com',9513248236,to_date('02-22-1980','mm-dd-yyyy'),'female');
+--  INSERT INTO Users VALUES (5,'Manue','Knox','Sarang Street, Mandvi','ManueKnox@yahool.co.in',8796542315,to_date('11-23-2003','mm-dd-yyyy'),'female');
+--  INSERT INTO Users VALUES (6,'Alec','Dalton','Rajugari Building','alecdalton@gmail.com',7896542583,to_date('10-08-2000','mm-dd-yyyy'),'male');
+--  INSERT INTO Users VALUES (7,'Drew','Travis','Airoli Vashi Mumbai','DrewTravis@yahoo.co.in',7563215852,to_date('01-25-1998','mm-dd-yyyy'),'male');
+--  INSERT INTO Users VALUES (8,'Makaila','Burch','Brindavan Bldg Evershine Nagar Malad','MakailaBurch@yahoo.com',8795642583,to_date('11-11-2011','mm-dd-yyyy'),'female');
+--  INSERT INTO Users VALUES (9,'Genesis','Marshall','Bath Bazar Samuel Street Masjid','GenesisMarshall@gmail.com',7896541230,to_date('10-10-2010','mm-dd-yyyy'),'male');
+--  INSERT INTO Users VALUES (10,'Marlon','Todd',' Railway Station Fateh Puri','MarlonTodd@yahoo.com',8524713654,to_date('06-22-1885','mm-dd-yyyy'),'male');
+
+-- -- posts
+-- insert into posts values(1,'Vin Deasel',to_date('09-02-2022','mm-dd-yyyy'),1);
+-- insert into posts values(2,'WE DIG',to_date('04-16-2021','mm-dd-yyyy'),1);
+-- insert into posts values(3,'sky is overarted',to_date('02-09-2022','mm-dd-yyyy'),2);  
+-- insert into posts values(4,'post no 4',to_date('08-15-2021','mm-dd-yyyy'),2);
+-- insert into posts values(5,'lumos maxima',to_date('07-16-200','mm-dd-yyyy'),3);
+-- insert into posts values(6,'cake heals all',to_date('11-21-1999','mm-dd-yyyy'),3);
+-- insert into posts values(7,'skys the limit',to_date('09-17-1989','mm-dd-yyyy'),4);
+-- insert into posts values(8,'sparkles',to_date('05-30-2009','mm-dd-yyyy'),5);
+-- insert into posts values(9,'smile',to_date('04-04-2015','mm-dd-yyyy'),5);
+-- insert into posts values(10,'walk it like i talk it',to_date('05-14-2015','mm-dd-yyyy'),5);
+-- insert into posts values(11,'amigos',to_date('03-21-2006','mm-dd-yyyy'),6);
+-- insert into posts values(12,'expect unexpect',to_date('09-09-2012','mm-dd-yyyy'),6);
+-- insert into posts values(13,'yolo',to_date('07-25-2004','mm-dd-yyyy'),7);
+-- insert into posts values(14,'night sky',to_date('02-04-2010','mm-dd-yyyy'),7);
+-- insert into posts values(15,'small height',to_date('08-13-2018','mm-dd-yyyy'),9);
+
+-- -- comments
+-- insert into comments values(1,1, 1,to_date('02-09-2022','mm-dd-yyyy'),'Never seen a selfie of yours that I don’t like');
+-- insert into comments values(2, 2, 1,to_date('04-17-2021','mm-dd-yyyy'),'You are the coolest');
+-- insert into comments values(3,2 , 2,to_date('04-16-2021','mm-dd-yyyy'),'Blessing my Insta feed once again');
+-- insert into comments values(4, 3, 3,to_date('02-09-2022','mm-dd-yyyy'),'The hottest pal in the town ');
+-- insert into comments values,(5,5 , 5,to_date('07-16-2008','mm-dd-yyyy'),'I don’t see any competition here for your gorgeous looks ');
+-- insert into comments values(6,5 ,5 ,to_date('07-16-2008','mm-dd-yyyy'),'You and strong Wi-Fi are what I only need in my life');
+-- insert into comments values(7, 6, 5,to_date('11-21-1999','mm-dd-yyyy'),'Impressive, I have never seen a nice photo of yours like this');
+-- insert into comments values(8,7 , 8,to_date('4-10-1990','mm-dd-yyyy'),'Your charm is genuinely irresistible');
+-- insert into comments values(9,8 , 9,to_date('6-11-2009','mm-dd-yyyy'),'Friends come and go, but true buddies stick like that mark on your skin');
+-- insert into comments values(10,8 , 10,to_date('5-30-2009','mm-dd-yyyy'),'I feel like I have known your whole life');
+-- insert into comments values(11, 8,6 ,to_date('5-30-2009','mm-dd-yyyy'),'I don’t know if you mind knowing this, but my buddy is the cutest guy around');
+-- insert into comments values(12,10 ,10 ,to_date('2-09-2016','mm-dd-yyyy'),'You are the superhot thing to have graced this planet since the Yucatan meteorite');
+-- insert into comments values(13,10 ,10 ,to_date('2-09-2016','mm-dd-yyyy'),'We will always be friends until we are so old and senile');
+-- insert into comments values(14,11 ,2 ,to_date('3-21-2006','mm-dd-yyyy'),'Sending this selfie to NASA, because you are a star !');
+-- insert into comments values(15, 11,2 ,to_date('3-21-2006','mm-dd-yyyy'),'You make me want to take everything in your wardrobe. P.S. Can I borrow that top?');
+-- insert into comments values(16,12 ,3 ,to_date('09-9-2012','mm-dd-yyyy'),'You should really put a warning out there before you post something so gorgeous');
+-- insert into comments values(17, 12,10 ,to_date('09-9-2012','mm-dd-yyyy'),'Excuse me, what is that lipstick and can I borrow it ASAP?');
+-- insert into comments values(18, 12,9 ,to_date('09-10-2012','mm-dd-yyyy'),'Someone hang this selfie up in a museum, because my bestie’s makeup lewk is a work of art');
+-- insert into comments values(19,12 ,8 ,to_date('09-10-2012','mm-dd-yyyy'),'How is it that every color looks amazing on you?');
+-- insert into comments values(20, 14,8 ,to_date('02-04-2010','mm-dd-yyyy'),'Look at that #NoFilter queen');
+
+-- -- pages
+-- insert into pages values(1,'andy_the_aircon','Give your audience a mind break with a puzzle');
+-- insert into pages values(2,'bill_the_king','Make some barbequeus!');
+-- insert into pages values(3,'surely_an_athlete','Master the basics!');
+-- insert into pages values(4,'i_killed_cupid','Lets kill some time with creativity!');
+-- insert into pages values(5,'jimmy_not_choo','Hack it up');
+
+-- -- pagelike
+-- insert into page_likes values(1,1);
+-- insert into page_likes values(2,5);
+-- insert into page_likes values(3,8);
+-- insert into page_likes values(4,9);
+-- insert into page_likes values(5,1);
+-- insert into page_likes values(5,2);
+-- insert into page_likes values(5,10);
+-- insert into page_likes values(3,10);
+-- insert into page_likes values(3,9);
+-- insert into page_likes values(1,10);
+-- insert into page_likes values(2,1);
+-- insert into page_likes values(2,2);
+-- insert into page_likes values(1,8);
+
+-- -- photos
+-- insert into photos values(1 , 1 ,'http://images.com/image1' );
+-- insert into photos values(2 , 1 ,'http://images.com/image2' );
+-- insert into photos values(3 , 2 ,'http://images.com/image3' );
+-- insert into photos values(4 , 2 ,'http://images.com/image4' );
+-- insert into photos values(5 , 3 ,'http://images.com/image5' );
+-- insert into photos values(6 , 3 ,'http://images.com/image6' );
+-- insert into photos values(7 , 3 ,'http://images.com/image7' );
+-- insert into photos values(8 , 4 ,'http://images.com/image8' );
+-- insert into photos values(9 , 5 ,'http://images.com/image9' );
+-- insert into photos values(10 , 6 ,'http://images.com/image10');
+-- insert into photos values(11 , 7,'http://images.com/image11' );
+-- insert into photos values(12 , 8 ,'http://images.com/image12' );
+-- insert into photos values(13 , 9 ,'http://images.com/image13' );
+-- insert into photos values(14 , 9 ,'http://images.com/image14' );
+-- insert into photos values(15 , 10 ,'http://images.com/image15');
+-- insert into photos values(16 , 11 ,'http://images.com/image16');
+-- insert into photos values(17 , 12 ,'http://images.com/image17' );
+-- insert into photos values(18 , 13 ,'http://images.com/image18' );
+-- insert into photos values(19 , 14 ,'http://images.com/image19' );
+-- insert into photos values(20 , 15 ,'http://images.com/image20' );
+
+-- -- comments_likes
+-- insert into comment_likes values(1,1);
+-- insert into comment_likes values(1,2);
+-- insert into comment_likes values(2,1);
+-- insert into comment_likes values(2,4);
+-- insert into comment_likes values(3,5);
+-- insert into comment_likes values(4,5);
+-- insert into comment_likes values(4,7);
+-- insert into comment_likes values(5,8);
+-- insert into comment_likes values(6,8);
+-- insert into comment_likes values(13,10);
+
+-- -- share
+-- insert into shares values(1,2);
+-- insert into shares values(1,3);
+-- insert into shares values(1,4);
+-- insert into shares values(2,5);
+-- insert into shares values(3,2);
+
+-- -- post_likes
+-- insert into posts_likes values(1,1);
+-- insert into posts_likes values (1,2);
+--  insert into posts_likes values(1,3);
+--  insert into posts_likes values(1,4);
+--  insert into posts_likes values(1,5);
+--  insert into posts_likes values(1,6);
+--  insert into posts_likes values(2,1);
+--  insert into posts_likes values(2,2);
+-- insert into posts_likes values(2,3);
+-- insert into posts_likes values(2,4);
+-- insert into posts_likes values(2,5);
+-- insert into posts_likes values(2,6);
+-- insert into posts_likes values(3,2);
+-- insert into posts_likes values(3,5);
+-- insert into posts_likes values(3,6);
+-- insert into posts_likes values(4,9);
+-- insert into posts_likes values(4,6);
+-- insert into posts_likes values(5,3);
+-- insert into posts_likes values(5,6);
+-- insert into posts_likes values(5,8);
+-- insert into posts_likes values(6,4);
+-- insert into posts_likes values(6,5);
+-- insert into posts_likes values(7,8);
+-- insert into posts_likes values(8,2);
+-- insert into posts_likes values(8,9);
+-- insert into posts_likes values(8,7);
+-- insert into posts_likes values(9,2);
+-- insert into posts_likes values(9,5);
+-- insert into posts_likes values(9,7);
+-- insert into posts_likes values(9,8);
+
+-- --friends
+-- insert into friends values(1,2);
+-- insert into friends values (1,3);
+--  insert into friends values(1,4);
+--  insert into friends values(1,5);
+--  insert into friends values(2,10);
+--  insert into friends values(2,3);
+--  insert into friends values(2,4);
+-- insert into friends values (2,5);
+-- insert into friends values(3,2);
+-- insert into friends values(3,4);
+-- insert into friends values(3,6);
+-- insert into friends values(4,2);
+-- insert into friends values(4,3);
+-- insert into friends values(4,5);
+-- insert into friends values(5,6);
+-- insert into friends values(5,7);
+-- insert into friends values(6,2);
+-- insert into friends values(7,2);
+-- insert into friends values(7,1);
+-- insert into friends values(7,3);
+-- insert into friends values(7,5);
+-- insert into friends values(7,6);
+-- insert into friends values(7,8);
+-- insert into friends values(7,9);
+-- insert into friends values(8,10);
+-- insert into friends values(8,1);
+-- insert into friends values(9,2);
+-- insert into friends values(9,3);
+-- insert into friends values(10,7);
+-- insert into friends values(10,6);
+-- insert into friends values(10,5);
+-- insert into friends values(10,4);
+
+
+-- printing of data;
+
+--DESC USERS;
+--desc posts
+
+-- SELECT * FROM users;
+-- SELECT * FROM posts;
+-- select * FROM comments;
+-- select * FROM pages;
+--select * FROM page_likes;
+--SELECT * FROM photos;
+--SELECT * FROM comment_likes;
+--SELECT * FROM shares;
+--SELECT * FROM posts_likes;
+-- SELECT * FROM friends;
+
+-- select table_name from user_tables
+
+
+-- -- ******************************************
+-- --function
+-- -- total no of  users
+-- DECLARE
+--     ans int;
+--     total int ;
+--     Function Total_user return int  AS
+--     BEGIN
+--         SELECT count(*) INTO total FROM users ;
+--         return total;
+--     END ;
+-- BEGIN
+--     ans:=Total_user();
+--     DBMS_OUTPUT.PUT_LINE(ans);
+-- END;
+
+-- -- ******************************************
+
+-- --total likes on a give post
+-- declare
+--     total int;
+--     ans int;
+--     function likecount(pst_id posts_likes.post_id%type) return int as
+--     begin
+--         select count(*) into total from posts_likes  where  post_id=pst_id;
+--         return total;
+--     end;
+-- begin
+--     ans:=likecount(1);
+--     DBMS_OUTPUT.PUT_LINE(ans);
+-- end;
+
+-- -- *******************************************
+-- -- no of friends of a given user
+-- declare 
+--     total int ;
+--     ans int;
+--     us_name users.firstname%type;
+--     function friends_count(us_id users.user_id%type) return int as
+--     begin 
+--         select firstname into us_name from users where users.user_id=us_id;
+--         DBMS_OUTPUT.PUT_LINE(us_name);
+--         select count(*) into total from friends where friends.user_id=us_id;
+--         return total;
+--     end;
+-- begin
+--     ans:=friends_count(1);
+--     DBMS_OUTPUT.PUT_LINE(ans);
+-- end;
+
+-- -- *******************************************
+
+-- --cursor
+-- -- name of all pages with their like count
+-- declare
+--     pag_name pages.page_name%type;
+--     total int ;
+--     cursor c1 is select page_id from page_likes group by page_id;
+--     rec c1%rowtype;
+-- begin
+--     open c1;
+--     loop
+--         fetch c1 into rec;
+--         select count(*) into total from page_likes where page_likes.page_id=rec.page_id;
+--         select page_name into pag_name from pages where pages.page_id=rec.page_id;
+--         exit when c1%notfound;
+--         dbms_output.put_line(pag_name || '   ' || total);
+--     end loop;
+--     close c1;
+-- end;
+
+-- -- ********************************************
+-- -- no of post of each user
+
+-- declare
+--     cursor c5 is select user_id from posts group by user_id;
+--     rec c5%rowtype;
+--     total int;
+--     us_name users.firstname%type;
+-- begin
+--     open c5;
+--     loop
+--         fetch c5 into rec;
+--         select firstname into us_name from users where users.user_id=rec.user_id;
+--         select count(*) into total from posts where posts.user_id=rec.user_id;
+--         exit when c5%notfound;
+--         dbms_output.put_line(us_name || '   ' || total);
+--     end loop;
+--     close c5;
+-- end;
+        
+        
+    
+    
+
+-- -- *********************************************
+
+-- -- return all the names of people who have liked their post 
+-- declare
+--     cursor c1(n number) is select posts_likes.user_id, users.firstname from posts_likes,users where posts_likes.user_id=users.user_id and post_id=n;
+-- begin
+--     for rec in c1(1) loop
+--         dbms_output.put_line(rec.firstname);
+--     end loop;
+-- end;
+
+-- -- ***********************************************
+
+-- -- printing all comments on particular post
+-- declare
+--     cursor c2(n2 number) is select post_id, comment_content from comments where post_id=n2;
+-- begin
+--     for rec in c2(2) loop
+--         dbms_output.put_line('comment: '||rec.comment_content);
+--     end loop;
+-- end;
+
+-- -- ***********************************************
+-- --  who liked the comment(comment detail)
+-- declare 
+--     my_com comments.comment_content%type;
+--     com number:=1;
+--     cursor c3( p number) is select comments.post_id, comments.comment_id, users.firstname from comments,users where (comments.comment_id=com) and (comments.post_id=p) and (users.user_id=comments.user_id);
+-- begin
+--         select comments.comment_content into my_com from comments where comments.comment_id=com;
+--         dbms_output.put_line('comment: '||my_com);
+--     for rec in c3(1) loop
+--         dbms_output.put_line('who liked: '||rec.firstname);
+--     end loop;
+-- end;
+
+-- -- *************************************************
+
+-- -- procedures
+-- -- to insert new user into table
+-- store procedure
+-- CREATE OR REPLACE PROCEDURE new_user(
+-- 	   new_user_id IN users.user_id%TYPE,
+-- 	   new_first_name IN users.firstname%TYPE,
+-- 	   new_last_name IN users.lastname%TYPE,
+-- 	   new_address IN users.address%TYPE,
+-- 	   new_email IN users.email%TYPE,
+-- 	   new_phone_number IN users.phone_no%TYPE,
+-- 	   new_dob IN users.dob%TYPE,
+-- 	   new_gender IN users.gender%TYPE )
+-- IS
+-- BEGIN
+
+--   INSERT INTO users
+--   VALUES (new_user_id, new_first_name,new_last_name, new_address,new_email, new_phone_number,new_dob,new_gender);
+
+--   COMMIT;
+
+-- END;
+-- begin
+-- new_user(15,'rishabh','handoo','chandi','rishabhhandoo@gamil.com','9852456823',to_date('12-04-2002','dd-mm-yyyy'),'male');
+-- end;
+-- select * from users;
+
+
+-- -- *************************************************
+
+-- -- procedure to insert new posts
+-- -- no need to add date of new post
+-- CREATE OR REPLACE PROCEDURE new_post(
+-- 	   new_post_id IN posts.post_id%TYPE,
+--       new_post_content IN posts.post_content%TYPE,
+-- 	   new_user_id IN posts.user_id%TYPE
+-- 	   )
+-- IS
+-- BEGIN
+
+--   INSERT INTO posts
+--   VALUES (new_post_id,new_post_content,sysdate,new_user_id);
+
+--   COMMIT;
+-- END;
+-- begin
+--     new_post(18,'bts',15);
+-- end;
+
+-- -- *********************************************
+-- -- no of shares of a specific post
+-- CREATE or REPLACE PROCEDURE no_of_share(p_id in int)
+-- AS
+-- no_shares int;
+-- BEGIN
+-- select count(*) into no_shares from shares where p_id = post_id;
+
+-- dbms_output.put_line(no_shares);
+-- End;
+
+-- begin
+-- no_of_share(1);
+-- end;
+
+-- -- ***********************************************
+
+-- -- procedure for most liked post
+-- create or replace procedure most_liked
+-- as
+-- likes int;
+
+-- begin
+
+-- select max(count()) into likes from posts_likes group by posts_likes.post_id order by count() fetch first 1 rows only;
+-- dbms_output.put_line(likes);
+
+-- end;
+
+
+-- begin
+-- most_liked;
+-- end;
+
+-- -- ************************************************
+
+--trigger
+-- create or replace trigger fna_upper
+-- before insert or update  
+-- on Users
+-- for each row
+-- begin
+--   :new.firstname:=initcap(:new.firstname);
+--   :new.lastname:=initcap(:new.lastname);
+-- end;
+-- insert into users values (16,'ishan','mazi','chandi','ishanmazi@gamil.com','9852485823',to_date('12-05-2002','dd-mm-yyyy'),'male');
+-- select * from users;
+
+
+-- -- *********************************************
+-- -- if post deleted then data releated to that post will be deleted
+-- -- not working
+-- create or replace trigger delete_this after delete of post_id on posts for each row
+
+-- begin
+--     delete from posts_likes where post_id=:old.post_id;
+--     delete from shares where post_id=:old.post_id;
+--     delete from comments where post_id=:old.post_id;
+-- end;
+-- delete from posts where post_id=30;
+-- -- ***********************************************
+-- -- checking user exist or not
+-- declare 
+-- n Users.user_id%type;
+-- begin
+-- select user_id into n from Users where user_id=21;
+-- dbms_output.put_line('User_id:'||n);
+-- exception
+-- when no_data_found then
+-- dbms_output.put_line('No user found !');
+-- end;
+-- -- ***********************************************
